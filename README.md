@@ -10,16 +10,16 @@ my_volume
 ● Create a new Docker container using the "nginx" image and mount the "my_volume"
 volume to the container's "/usr/share/nginx/html" directory.
 
-● Copy the "index.html" file from your host machine to the "my_volume" volume using the
-"docker cp" command. 
-
-docker cp index.html new_nginx_container:/usr/share/nginx/html/
-Successfully copied 2.05kB to new_nginx_container:/usr/share/nginx/html/
-
 I created this using this command
 
 docker run -d --name new_nginx_container -v my_volume:/usr/share/nginx/html -p 8080:80 nginx
 
+● Copy the "index.html" file from your host machine to the "my_volume" volume using the
+"docker cp" command. 
+
+docker cp index.html new_nginx_container:/usr/share/nginx/html/
+
+Successfully copied 2.05kB to new_nginx_container:/usr/share/nginx/html/
 
 ● Verify that the "nginx" default page is accessible on your host machine at
 http://localhost:8080.
@@ -37,7 +37,7 @@ Digest: sha256:4c0fdaa8b6341bfdeca5f18f7837462c80cff90527ee35ef185571e1c327beac
 Status: Downloaded newer image for nginx:latest
 504169fac42cfa0d8015f82f291fc2d95dcc8b1ec6a285d2720d3f98d9d444af
 
-Yes this is working in my host machine.
+Yes, this is working in my host machine.
 
 ● Stop & remove the container
 
@@ -51,16 +51,16 @@ new_nginx_container
 
 
 ● Create a new Docker container using the "httpd" image and mount the "my_volume"
-volume to the container's "/usr/local/apache2/htdocs" directory. (4 marks)
-● Verify that the "httpd" default page is accessible on your host machine at
-http://localhost:8081
+volume to the container's "/usr/local/apache2/htdocs" directory.
 
 docker run -d --name httpd_container -v my_volume:/usr/local/apache2/htdocs -p 8081:80 httpd
 
 dd60cb58a75f8d3ee80cf26a4f937c99f8f89b8a3a06dccccc5474dd7403c5ec
 
-The default page is working.
+● Verify that the "httpd" default page is accessible on your host machine at
+http://localhost:8081
 
+The default page is working.
 
 ● Copy the "about.html" file from your host machine to the "my_volume" volume using the
 "docker cp" command.
@@ -101,7 +101,9 @@ Digest: sha256:ba76950ac9eaa407512c9d859cea48114eeff8a6f12ebaa5d32ce79d4a017dd8
 Status: Downloaded newer image for busybox:latest
 
 / # ls /mnt/
+
 50x.html    about.html  index.html
+
 / # 
 
 docker volume ls
