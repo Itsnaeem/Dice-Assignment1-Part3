@@ -152,4 +152,19 @@ git add .
 
 git commit -m "I compile the README.md"
 
-git
+git push origin main 
+
+Username for 'https://github.com': itsnaeem
+Password for 'https://itsnaeem@github.com': 
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 2.37 KiB | 2.37 MiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/Itsnaeem/Dice-Assignment1-Part3.git
+   9a59405..a36723d  main -> main
+
+
+END of Part3 Assignment-1
