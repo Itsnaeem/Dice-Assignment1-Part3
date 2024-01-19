@@ -2,23 +2,23 @@
 This Assignment is based on Docker. In this part, we will do the Docker Volumes
 
 ● Create a new Docker volume named "my_volume". 
-
- `docker volume create my_volume`
-
+```bash
+ docker volume create my_volume
+```
 my_volume
 
 ● Create a new Docker container using the "nginx" image and mount the "my_volume"
 volume to the container's "/usr/share/nginx/html" directory.
 
 I created this using this command
-
+```bash
 docker run -d --name new_nginx_container -v my_volume:/usr/share/nginx/html -p 8080:80 nginx
-
+```
 ● Copy the "index.html" file from your host machine to the "my_volume" volume using the
 "docker cp" command. 
-
+```bash
 docker cp index.html new_nginx_container:/usr/share/nginx/html/
-
+```
 Successfully copied 2.05kB to new_nginx_container:/usr/share/nginx/html/
 
 ● Verify that the "nginx" default page is accessible on your host machine at
@@ -40,21 +40,21 @@ Status: Downloaded newer image for nginx:latest
 Yes, this is working in my host machine.
 
 ● Stop & remove the container
-
+```bash
 docker stop new_nginx_container 
-
+```
 new_nginx_container
-
+```bash
 docker rm new_nginx_container
-
+```
 new_nginx_container
 
 
 ● Create a new Docker container using the "httpd" image and mount the "my_volume"
 volume to the container's "/usr/local/apache2/htdocs" directory.
-
+```bash
 docker run -d --name httpd_container -v my_volume:/usr/local/apache2/htdocs -p 8081:80 httpd
-
+```
 dd60cb58a75f8d3ee80cf26a4f937c99f8f89b8a3a06dccccc5474dd7403c5ec
 
 ● Verify that the "httpd" default page is accessible on your host machine at
@@ -65,7 +65,9 @@ The default page is working.
 ● Copy the "about.html" file from your host machine to the "my_volume" volume using the
 "docker cp" command.
 
+```bash
 docker cp about.html httpd_docker:/usr/local/apache2/htdocs/
+```
 Successfully copied 2.56kB to httpd_docker:/usr/local/apache2/htdocs/
 
 ● Verify that the "about.html" file is accessible on your host machine at
@@ -78,46 +80,49 @@ Yes I verified its working & show the content of my `about.html`
 docker stop httpd_docker 
 
 httpd_docker
-
+```bash
 docker rm httpd_docker 
-
+```
 httpd_docker
 
 ● Verify that the "index.html" and "about.html" files are still available in the "my_volume"
 volume. 
 
 I run a temporary container with the volume mount
-
+```bash
 docker run --rm -it -v my_volume:/mnt busybox
-
-`ls /mnt`
-
+```
+```bash
+ls /mnt
+```
+```bash
 docker run --rm -it -v my_volume:/mnt busybox
-
+```
 Unable to find image 'busybox:latest' locally
 latest: Pulling from library/busybox
 a307d6ecc620: Pull complete 
 Digest: sha256:ba76950ac9eaa407512c9d859cea48114eeff8a6f12ebaa5d32ce79d4a017dd8
 Status: Downloaded newer image for busybox:latest
-
+```bash
 / # ls /mnt/
-
+```
 50x.html    about.html  index.html
 
 / # 
-
+```bash
 docker volume ls
-
+```
 DRIVER    VOLUME NAME
 
 local     my_volume
-
+```bash
 docker volume rm my_volume 
-
+```
 my_volume
 
+```bash
 docker volume ls
-
+```
 DRIVER    VOLUME NAME
 
 Now no volume is available.
@@ -131,9 +136,9 @@ I created this README.md with the mentioned step-by-step commands & their output
 
 ● Push the codebase for the sample application to your GitHub repository (create a new
 one for this part)
-
+```bash
 git status
-
+```
 On branch main
 Your branch is up to date with 'origin/main'.
 
@@ -150,12 +155,15 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 
 
+```bash
 git add .
-
+```
+```bash
 git commit -m "I compile the README.md"
-
+```
+```bash
 git push origin main 
-
+```
 Username for 'https://github.com': itsnaeem
 Password for 'https://itsnaeem@github.com': 
 Enumerating objects: 7, done.
@@ -169,4 +177,4 @@ To https://github.com/Itsnaeem/Dice-Assignment1-Part3.git
    9a59405..a36723d  main -> main
 
 
-END of Part3 Assignment-1
+## END of Part3 Assignment-1
